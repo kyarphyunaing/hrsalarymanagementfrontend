@@ -1,0 +1,32 @@
+<div class="container">
+    <input type="text" class ="form-control" id = "minSalary" name = "minSalary">
+<input type="text" class ="form-control" id = "maxSalary" name = "maxSalary">
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" i18n> id </th>
+            <th scope="col" i18n> Name </th>
+            <th scope="col" i18n> Login </th>
+            <th scope="col" i18n> Salary </th> 
+            <th scope="col" i18n> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees | paginate: { itemsPerPage: 10, currentPage: p }">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.login}}</td>
+            <td>{{employee.salary}}</td>
+            <td>
+                <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
+                <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="justify-center">
+    <pagination-controls (pageChange)="p= $event"></pagination-controls>
+</div>
