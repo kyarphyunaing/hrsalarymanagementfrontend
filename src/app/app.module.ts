@@ -13,6 +13,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ImportcsvComponent } from './importcsv/importcsv.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { MatInputModule} from "@angular/material/input";
+import { MatTableModule} from "@angular/material/table";
+import { MatPaginatorModule} from "@angular/material/paginator";
+import { MatSortModule} from "@angular/material/sort";
+import { MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +32,16 @@ import { ImportcsvComponent } from './importcsv/importcsv.component';
   imports: [
     BrowserModule,
     AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule,
-    BrowserAnimationsModule,MatDialogModule,NgxPaginationModule
+    BrowserAnimationsModule,MatDialogModule,NgxPaginationModule,
+    MatInputModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatProgressSpinnerModule,
+        MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);

@@ -1,6 +1,8 @@
-import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,HttpHeaders, HttpParams } from '@angular/common/http';
+import { analyzeFileForInjectables } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { BodyReponse } from '../model/bodyresponse';
 import { Employee } from '../model/employee';
 @Injectable({
   providedIn: 'root'
@@ -12,11 +14,11 @@ export class EmployeeService {
 
   constructor(private httpClient: HttpClient) { }
   
-  /*getEmployeesList(): Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>(`${this.baseURL}/lists`);
-  }*/
   getEmployeesList(): Observable<Employee[]>{
     return this.httpClient.get<Employee[]>(`${this.baseURL}/lists`);
+  }
+  getFilteredEmployeesList(minSalary:number,maxSalary:number,offset:number=0,limit:number=10,orderByColumn:string='+id'): Observable<BodyReponse>{
+    return this.httpClient.get<BodyReponse>(`${this.baseURL}/users?minSalary=${minSalary}&maxSalary=${maxSalary}&offset=${offset}&limit=${limit}&sort=${orderByColumn}`);
   }
   createEmployee(employee: Employee): Observable<any>{
     let body = { id : `${employee.id}`,

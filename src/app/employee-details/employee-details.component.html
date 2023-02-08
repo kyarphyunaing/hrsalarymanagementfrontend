@@ -1,27 +1,26 @@
-<div class="col-md-6 offset-md-3">
-    <h3> View Employee </h3>
+<div class="col-6 offset-3">
     <form>
-    
         <div class="form-group">
-            <label> Id </label>
+            <label class="form-label label-text"> ID </label>
             <input type="text" class ="form-control" id = "id"
                 [(ngModel)] = "employee.id" name = "id" readonly>
         </div>
+        
         <div class="form-group">
-            <label> Login </label>
+            <label class="form-label label-text"> Login </label>
             <input type="text" class ="form-control" id = "login"
                 [(ngModel)] = "employee.login" name = "login" readonly>
         </div>
         <div class="form-group">
-            <label> Name </label>
+            <label class="form-label label-text"> Name </label>
             <input type="text" class ="form-control" id = "name"
                 [(ngModel)] = "employee.name" name = "name" readonly>
         </div>
     
         
         <div class="form-group">
-            <label> Salary </label>
-            <input type="text" class ="form-control" id = "salary"
+            <label class="form-label label-text"> Salary </label>
+            <input type="number" class ="form-control" id = "salary"
                 [(ngModel)] = "employee.salary" name = "salary" readonly>
         </div>
         <button class = "btn btn-success" type ="button" (click) = "goToEmployeeList()">Close</button>

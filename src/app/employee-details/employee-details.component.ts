@@ -10,7 +10,7 @@ import { EmployeeService } from '../service/employee.service';
 export class EmployeeDetailsComponent implements OnInit {
 
   id!: string;
-  employee: Employee = new Employee();
+  employee!: Employee;
   constructor(private employeeService: EmployeeService,
     private route: ActivatedRoute,
     private router: Router) { }
