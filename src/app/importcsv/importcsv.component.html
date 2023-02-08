@@ -1,17 +1,17 @@
 <div class="container" style="padding:50px;">
-    <form (ngSubmit) = "onSubmit()" >
-    <input type="file" class="file-input"
-    (change)="onFileSelected($event)" accept=".csv" #fileUpload>
+  <form (ngSubmit)="onSubmit()">
+    <input type="file" class="file-input" (change)="onFileSelected($event)" accept=".csv" #fileUpload>
 
-<div class="file-upload">
+    <div class="file-upload">
 
-{{fileName || "No file uploaded yet."}}
- <button color="primary" class="upload-btn"
-   (click)="fileUpload.click()">
-   <img src="../../assets/paperclip.svg" alt="buttonpng" border="0" />
- </button>
- <div class="form-group">
-    <button class = "btn btn-success" type="submit" *ngIf="uploadChecked">Import</button>
+      {{fileName || "No file uploaded yet."}}
+      <button style="background-color: #09755fb5;border-radius: 5px;width:40px;height: 40px;" class="upload-btn"
+        (click)="fileUpload.click()">
+        <i class="fa fa-paperclip"></i> </button>
+      <div class="form-group">
+        <button class="btn btn-success" type="submit" *ngIf="uploadChecked">Import</button>
+      </div>
     </div>
-</div></form>
+    <div class="response-message"  *ngIf="err">{{"please check detail of your file."}}</div>
+  </form>
 </div>

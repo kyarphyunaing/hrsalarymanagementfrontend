@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../service/employee.service';
 
@@ -12,6 +11,7 @@ export class ImportcsvComponent implements OnInit {
   uploadChecked:boolean=false;
   fileName = '';
   file!:File;
+  err:boolean=false;
 
   constructor(private employeeService: EmployeeService,
     private router:Router) {
@@ -30,8 +30,8 @@ onSubmit(){
   if (this.file) {
        
     this.employeeService.importCSV(this.file).subscribe({
-     next: (data) => this.goToEmployeeList(),
-     error: (e) => console.error(e)
+     next: (data) => {this.err=false,this.goToEmployeeList()},
+     error: (e) => {console.error(e);this.err=true;}
    }
    ); 
  }
